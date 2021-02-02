@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IA : Reconaissance manuscrite</title>
+        <link rel="icon" type="image/png" href="../static/uca.png" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='draw.js') }}"></script>
+        <link rel="stylesheet" href="../static/css.css">
+                <script type="text/javascript" src="../static/particules.js"></script>
+    </head>
+
+
+    <body>
+    <div id="affichage">
+
+        <img src="../static/UCApagepng.png">
+
+        <h1>Projet IA : Reconnaisance d'image</h1>
+    </div>
+        <form id = "myForm" enctype="multipart/form-data">
+            <br>
+            <h2>Dessiner ici</h2>
+            <canvas id="canvas", name ="draw" width="280" height="280" style="background-color: #CD5C5C; border: 5px solid black;">
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        drawCanvas();
+                    });
+                </script>
+            </canvas>
+        </form>
+        <form id = "acc" action="{{ url_for('predict')}}" method="POST" enctype="multipart/form-data:">
+            <input type="label" id = 'url' name="url" value="" style="display: none;">
+            <button type="button" class="btn btn-danger" id = 'clear' value="Effacer" onclick="return clearCanvas();">Supprimer</button>
+            <button type="submit" class="btn btn-success"  id = 'predict' value="Prédire" onclick="return save();">Prédire</button>
+            {%if prediction%}
+                <h2 style="color:red;">C'est probablement {{ prediction }} ! </h2>
+            {%endif%}
+        </form>
+    </body>
+</html>
