@@ -4,4 +4,4 @@ Cette application en python à pour but de reconnaitre les caractères manuscrit
 Ce dépot contient plusieurs fichiers importants :
 -GenerationBase.py -> Crée des répertoires se nomant avec chaque lettre de l'alphabet et contenant chaque image de cette lettre 
 
--
+-GenererModele.py -> Permet de générer le modele qui reconnait les différents caractères
